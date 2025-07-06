@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+body {
+  overflow: hidden;
+}
+
+.y-scroll-container {
+  overflow-y: auto;
+  padding-right: 0.25rem; /* pr-1 in Tailwind */
+}
+
+/* WebKit scrollbar styles */
+.y-scroll-container::-webkit-scrollbar {
+  width: 0.5rem; /* w-2 in Tailwind (8px) */
+}
+
+.y-scroll-container::-webkit-scrollbar-track {
+  background-color: #3f3f46; /* bg-neutral-700 */
+  border-radius: 9999px; /* rounded-full */
+}
+
+.y-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #737373; /* bg-neutral-500 */
+  border-radius: 9999px;
+}
+
+@keyframes portal-glitch {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+    filter: hue-rotate(60deg);
+  }
+  40% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(120deg);
+  }
+  60% {
+    transform: translate(-1px, 2px);
+    filter: hue-rotate(180deg);
+  }
+  80% {
+    transform: translate(1px, -1px);
+    filter: hue-rotate(240deg);
+  }
+}
+
+.portal-effect {
+  animation: portal-glitch 0.5s infinite;
+  background: radial-gradient(circle, #00ffd0 0%, #000000 80%);
+  color: #00ffd0;
+}

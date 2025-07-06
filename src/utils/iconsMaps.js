@@ -1,0 +1,33 @@
+import {
+  Calculator,
+  Chrome,
+  Clock,
+  Code2,
+  Earth,
+  FolderOpenIcon,
+  Gamepad2,
+  Image,
+  LockIcon,
+  NotebookPen,
+  PaintbrushIcon,
+  Terminal,
+  User2,
+  Wallpaper,
+} from "lucide-react";
+
+export const iconMap = {
+  notes: NotebookPen,
+  paint: PaintbrushIcon,
+  saved_notes: FolderOpenIcon,
+  clock: Clock,
+  security: LockIcon,
+  browser: Chrome,
+  space_explorer_game: Gamepad2,
+  portfolio: User2,
+  calculator: Calculator,
+  react_code_editor: Code2,
+  chitramitra: Image,
+  solar_system: Earth,
+  terminal: Terminal,
+  wallpaper: Wallpaper,
+};
