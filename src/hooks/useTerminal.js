@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useSetting } from "../context/useSettings";
 
 export function useTerminal() {
+  const { username } = useSetting();
   const [commandInput, setCommandInput] = useState("");
   const [outputLines, setOutputLines] = useState([]);
 
@@ -38,7 +40,7 @@ export function useTerminal() {
     },
     {
       command: "whoami",
-      output: ["👤 You are: admin (Level 99)"],
+      output: [`👤 You are: ${username} - admin (Level 99)`],
     },
     {
       command: "ping",

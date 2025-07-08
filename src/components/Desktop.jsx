@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeApp, minimizeApp } from "../store/windowsManagerSlice";
 import { setSavedNote } from "../store/notesSlice";
 import AppIcons from "./Desktop/AppIcons";
+import { useSetting } from "../context/useSettings";
 
 export default function Desktop() {
   const openApps = useSelector((state) => state.windowManager.openApps);
@@ -16,9 +17,13 @@ export default function Desktop() {
 
   const locallySetWallpaper = localStorage.getItem("wallpaper");
 
+  const { theme } = useSetting();
+
   return (
     <div
-      className="flex items-center justify-center h-screen w-screen bg-cover bg-center bg-no-repeat overflow-hidden  text-white flex-col gap-4"
+      className={`flex items-center justify-center h-screen w-screen bg-cover bg-center bg-no-repeat overflow-hidden ${
+        theme ? "text-white" : "text-gray-600"
+      }  flex-col gap-4`}
       style={{
         backgroundImage: `${
           wallpaperUrl || locallySetWallpaper

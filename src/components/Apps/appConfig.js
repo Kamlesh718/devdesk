@@ -7,6 +7,8 @@ import MyPortfolio from "./MyPortfolio";
 import Notes from "./Notes";
 import Paint from "./Paint";
 import SavedNotes from "./SavedNotes";
+import Security from "./Security";
+import Setting from "./Setting";
 import SolarSystem from "./SolarSystem";
 import SpaceGame from "./SpaceGame";
 import Terminal from "./Terminal";
@@ -61,5 +63,13 @@ export const appsConfig = {
   wallpaper: {
     title: "Wallpaper",
     component: WallpaperApp,
+  },
+  setting: {
+    title: "Setting",
+    component: Setting,
+  },
+  security: {
+    title: "Security",
+    component: Security,
   },
 };

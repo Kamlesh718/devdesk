@@ -13,7 +13,7 @@ function Notes() {
   } = useNotes();
   return (
     <>
-      <div className="flex gap-3">
+      <section className="flex gap-3">
         <input
           type="text"
           placeholder="Enter your note name"
@@ -28,7 +28,7 @@ function Notes() {
         >
           Save
         </button>
-      </div>
+      </section>
       {warning && (
         <div className="flex justify-between items-center gap-2 text-red-400 bg-red-400/10 border border-red-500/40 px-3 py-2 rounded-md text-sm mt-2 shadow-sm">
           <span>⚠️ Note: title and content are both required to save.</span>
@@ -41,7 +41,7 @@ function Notes() {
         </div>
       )}
 
-      <div
+      <section
         className="rounded-md shadow-lg w-full h-full mt-2 bg-zinc-900/70 backdrop-blur-md border border-white/10 transition-all"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -53,7 +53,7 @@ function Notes() {
           onChange={handleNoteContent}
           placeholder="Start typing your note here..."
         />
-      </div>
+      </section>
     </>
   );
 }

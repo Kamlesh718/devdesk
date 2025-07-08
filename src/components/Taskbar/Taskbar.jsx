@@ -15,6 +15,7 @@ import Weather from "./Weather";
 import NewsModal from "./NewsModal";
 import { useTaskbar } from "../../hooks/useTaskbar";
 import ActiveApps from "./ActiveApps";
+import { useSetting } from "../../context/useSettings";
 
 function Taskbar() {
   const {
@@ -23,6 +24,8 @@ function Taskbar() {
     newsContainerRef,
     showNewsButtonRef,
   } = useTaskbar();
+
+  const { theme } = useSetting();
 
   return (
     <motion.section
@@ -34,7 +37,9 @@ function Taskbar() {
         damping: 15,
         delay: 0.5,
       }}
-      className=" absolute bottom-0 left-0 w-full h-12 border-t-[1px] bg-black/30 backdrop-blur-sm border-t-gray-500  flex items-center justify-center text-sm z-20 px-2"
+      className={`absolute bottom-0 left-0 w-full h-12 border-t-[1px] ${
+        theme ? "bg-black/30 text-white" : "bg-white/70 text-gray-600"
+      } backdrop-blur-sm border-t-gray-500 flex items-center justify-center text-sm z-20 px-2`}
     >
       <div className=" flex items-center justify-between w-full">
         <div>

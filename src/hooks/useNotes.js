@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveNote, setNoteContent, setNoteName } from "../store/notesSlice";
+import {
+  resetNotes,
+  saveNote,
+  setNoteContent,
+  setNoteName,
+} from "../store/notesSlice";
 
 export function useNotes() {
   const noteName = useSelector((state) => state.notes.noteName);
@@ -34,6 +39,11 @@ export function useNotes() {
     dispatch(saveNote(newNote));
   };
 
+  const handleClearAllNotes = () => {
+    localStorage.setItem("notes", JSON.stringify([])); // ✅ clear storage first
+    dispatch(resetNotes()); // ✅ then clear Redux
+  };
+
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(saveNotes));
   }, [saveNotes]);
@@ -54,5 +64,6 @@ export function useNotes() {
     handleNoteName,
     handleNoteContent,
     handleSaveNote,
+    handleClearAllNotes,
   };
 }

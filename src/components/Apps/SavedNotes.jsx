@@ -2,50 +2,27 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSavedNote } from "../../store/notesSlice";
 import { Edit3Icon, NotepadTextIcon, Trash2 } from "lucide-react";
+import { useSavedNotes } from "../../hooks/useSavedNotes";
 
 function SavedNotes() {
-  const [editingNoteId, setEditingNoteId] = useState(null);
-  const [editedTitle, setEditedTitle] = useState("");
-  const [editedContent, setEditedContent] = useState("");
-  const dispatch = useDispatch();
-
-  const saveNotesFromStore = useSelector((state) => state.notes.saveNotes);
-  const saveNotes =
-    saveNotesFromStore !== undefined && saveNotesFromStore !== null
-      ? saveNotesFromStore
-      : JSON.parse(localStorage.getItem("notes")) || [];
-
-  // console.log(saveNotes);
-  const deleteSaveNote = (id) => {
-    const updatedNotes = saveNotes.filter((sn) => sn.id !== id);
-    dispatch(setSavedNote(updatedNotes));
-    localStorage.setItem("notes", JSON.stringify(updatedNotes));
-  };
-
-  const handleSaveEdit = (id) => {
-    const updatedNotes = saveNotes.map((note) =>
-      note.id === id
-        ? { ...note, title: editedTitle, content: editedContent }
-        : note
-    );
-
-    dispatch(setSavedNote(updatedNotes));
-    localStorage.setItem("notes", JSON.stringify(updatedNotes));
-    setEditingNoteId(null);
-  };
-
-  useEffect(() => {
-    const notes = JSON.parse(localStorage.getItem("notes")) || [];
-    dispatch(setSavedNote(notes));
-  }, [dispatch]);
-
+  const {
+    editingNoteId,
+    setEditingNoteId,
+    setEditedTitle,
+    editedTitle,
+    editedContent,
+    setEditedContent,
+    deleteSaveNote,
+    handleSaveEdit,
+    saveNotes,
+  } = useSavedNotes();
   return (
     <>
       {saveNotes.length === 0 ? (
         <span className="text-sm italic">No saved Notes</span>
       ) : (
         saveNotes.map((sn) => (
-          <div
+          <section
             key={sn.id}
             className="px-3 my-3 py-2 bg-white/5 hover:bg-white/10 rounded-md border border-white/10 text-sm text-white transition flex flex-col"
           >
@@ -101,7 +78,7 @@ function SavedNotes() {
                 <p className="mt-2">{sn.content}</p>
               </>
             )}
-          </div>
+          </section>
         ))
       )}
     </>

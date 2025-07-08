@@ -4,7 +4,7 @@ export const fetchNews = createAsyncThunk("news", async ({ page }) => {
   const newsAPIKey = import.meta.env.VITE_NEWS_API_KEY;
   try {
     const res = await fetch(
-      `https://newsapi.org/v2/everything?q=india&language=en&pageSize=8&page=${page}&apiKey=${newsAPIKey}`
+      `https://devdesk-news-api.onrender.com/api/news?page=${page}`
     );
     const data = await res.json();
     return data;

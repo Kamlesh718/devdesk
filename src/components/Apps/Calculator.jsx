@@ -23,16 +23,16 @@ export default function Calculator() {
 
   return (
     <div className="p-4 w-full h-full bg-zinc-900/60 rounded-lg text-white flex flex-col justify-between">
-      <div className="mb-2">
+      <section className="mb-2">
         <div className="text-lg font-mono bg-zinc-800 p-2 rounded-md mb-1">
           {input || "0"}
         </div>
         <div className="text-right text-xl font-semibold text-green-400">
           {result}
         </div>
-      </div>
+      </section>
 
-      <div className="grid grid-cols-4 gap-2 text-center">
+      <section className="grid grid-cols-4 gap-2 text-center">
         {[
           "7",
           "8",
@@ -65,7 +65,7 @@ export default function Calculator() {
         >
           Clear
         </button>
-      </div>
+      </section>
     </div>
   );
 }

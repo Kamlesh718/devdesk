@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { motion } from "motion/react";
 import { useDebounce } from "../../hooks/useDebounced";
-import { useWallpaper } from "../../hooks/useWallpaper";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchWallpapers,
@@ -9,7 +9,7 @@ import {
   setQuery,
   setWallpaperUrl,
 } from "../../store/wallpaperSlice";
-import SkeletonNewsCard from "../SkeletonNewsCard";
+
 import { Loader2 } from "lucide-react";
 
 function WallpaperApp() {
@@ -18,8 +18,6 @@ function WallpaperApp() {
     (state) => state.wallpaper
   );
   const debouncedQuery = useDebounce(query, 400);
-
-  console.log(status);
 
   useEffect(() => {
     if (debouncedQuery.trim().length >= 2) {
@@ -32,13 +30,12 @@ function WallpaperApp() {
     localStorage.setItem("wallpaper", wallpaperUrl || localWallpaper);
   }, [wallpaperUrl]);
 
-  console.log(wallpapers);
   return (
     <div className="p-4 h-full y-scroll-container">
       <h1 className="text-xl font-semibold mb-4 text-white">
         🖼 {query} Wallpapers
       </h1>
-      <div className="flex justify-between gap-2 m-2 items-center backdrop-blur-md p-2 rounded-md border border-white/10">
+      <section className="flex justify-between gap-2 m-2 items-center backdrop-blur-md p-2 rounded-md border border-white/10">
         <div className="flex gap-2">
           <input
             type="text"
@@ -67,16 +64,16 @@ function WallpaperApp() {
             Next
           </button>
         </div>
-      </div>
+      </section>
 
       {status === "loading" ? (
         <div className="flex w-full h-full items-center justify-center">
           <Loader2 className="animate-spin w-6 h-6" />
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <section className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {wallpapers.map((wallpaper) => (
-            <div
+            <motion.div
               key={wallpaper.id}
               className="rounded-lg overflow-hidden shadow-md border border-white/10 bg-white/5 hover:scale-105 transition cursor-pointer"
               onClick={() => dispatch(setWallpaperUrl(wallpaper.src.landscape))}
@@ -86,9 +83,9 @@ function WallpaperApp() {
                 alt={wallpaper.alt}
                 className="w-full h-40 object-cover"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </section>
       )}
     </div>
   );

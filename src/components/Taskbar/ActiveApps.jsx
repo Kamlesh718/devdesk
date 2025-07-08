@@ -1,4 +1,4 @@
-import { NotebookPen, PaintbrushIcon } from "lucide-react";
+import { BanIcon, NotebookPen, PaintbrushIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
 import { restoreApp } from "../../store/windowsManagerSlice";
@@ -11,7 +11,8 @@ function ActiveApps() {
   return (
     <AnimatePresence initial={false}>
       {openApps.map((apps) => {
-        const IconComponent = iconMap[apps.id] || <BanIcon />;
+        const matchedIcon = iconMap.find((icon) => icon.id === apps.id);
+        const IconComponent = matchedIcon?.Icon;
         return (
           <motion.li
             key={apps.id}

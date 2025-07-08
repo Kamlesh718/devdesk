@@ -4,16 +4,26 @@ import { motion } from "motion/react";
 import { iconMap } from "../utils/iconsMaps";
 import { useDispatch } from "react-redux";
 import { bringToFront } from "../store/windowsManagerSlice";
+import { useSetting } from "../context/useSettings";
 
 export default function Window({ title, id, onClose, onMinimize, children }) {
-  const Icon = iconMap[id];
+  const matchedIcon = iconMap.find((icon) => icon.id === id);
+  const Icon = matchedIcon?.Icon;
+
   const dispatch = useDispatch();
+  const { theme } = useSetting();
 
   const getWindowSize = (id) => {
     if (["paint", "space_explorer_game", "react_code_editor"].includes(id)) {
       return { width: 1500, height: 800 };
     } else if (
-      ["portfolio", "chitramitra", "solar_system", "wallpaper"].includes(id)
+      [
+        "portfolio",
+        "chitramitra",
+        "solar_system",
+        "wallpaper",
+        "setting",
+      ].includes(id)
     )
       return { width: 950, height: 770 };
 
@@ -49,9 +59,15 @@ export default function Window({ title, id, onClose, onMinimize, children }) {
         transition={{ type: "spring", stiffness: 160, damping: 20 }}
       >
         {/* Title Bar */}
-        <div className="window-title-bar flex items-center justify-between px-3 py-2 bg-zinc-800/70 border-b border-zinc-700 cursor-move">
+        <div
+          className={`window-title-bar flex items-center justify-between px-3 py-2 border-b cursor-move ${
+            theme
+              ? "bg-zinc-800/70 border-zinc-700"
+              : "bg-white/70 border-gray-300 text-gray-800"
+          }`}
+        >
           <h2 className="text-sm font-medium flex gap-2 items-center">
-            <Icon />
+            {Icon && <Icon className="w-4 h-4" />}
             {title}
           </h2>
           <div className="flex gap-2">
