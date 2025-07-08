@@ -3,7 +3,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 const SettingContext = createContext();
 
 function SettingsProvider({ children }) {
-  const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? savedTheme === "dark" : true; // default to dark
+  });
   const [username, setUsername] = useState(
     localStorage.getItem("username") || "Admin"
   );
