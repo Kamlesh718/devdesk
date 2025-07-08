@@ -6,7 +6,7 @@ export const fetchSearchLocation = createAsyncThunk(
     const APIKey = import.meta.env.VITE_WEATHER_API_KEY;
     try {
       const res = await fetch(`
-        http://api.weatherapi.com/v1/search.json?key=${APIKey}&q=${query}
+        https://api.weatherapi.com/v1/search.json?key=${APIKey}&q=${query}
       `);
       const data = await res.json();
       return data;
@@ -22,7 +22,7 @@ export const fetchCurrentWeather = createAsyncThunk(
     const APIKey = import.meta.env.VITE_WEATHER_API_KEY;
     try {
       const res = await fetch(`
-        http://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${lat},${lon}&aqi=yes
+        https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${lat},${lon}&aqi=yes
       `);
       const data = await res.json();
       return data;
