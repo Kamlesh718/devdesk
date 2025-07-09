@@ -18,21 +18,20 @@
 
 ## 🚀 Features
 
-- 🎨 Custom Windows with minimize, maximize, and close options
-- 📝 Notes app with local save, edit, and delete features
-- 🕒 Live digital Clock app with date formatting
-- 🎨 Paint app using [`tldraw`](https://github.com/tldraw/tldraw)
+- 🪟 Multi-window support (Open / Minimize / Close)
+- 📝 Notes and persistent Saved Notes
+- ⏰ Live Clock
+- 🎨 Paint app using [`tldraw`](https://www.tldraw.com/)
 - 🧮 Calculator
-- 📂 Saved Notes viewer with inline editing and deletion
-- 🌌 Embedded Space Explorer Game (personal project)
-- 💻 React Code Editor (personal project)
-- 📸 ChitraMitra – social media app (personal project)
-- 🌍 Wallpaper App powered by **Pexels API**
-- 📰 News Modal powered by **NewsAPI**
-- 🌘 Light / Dark Theme toggle with localStorage
-- 🔒 Optional Lock screen with password input
-- 🧪 Fake Terminal (styled mock terminal UI)
-- ⚙️ Settings Panel (Theme, Wallpaper, Security setup)
+- 🌌 Space Explorer game 
+- 💻 Embedded React Code Editor
+- 🌐 Fake Terminal UI
+- 📸 ChitraMitra – a mini social media clone
+- 📁 My Portfolio
+- 🖼️ Wallpaper using [Pexels API](https://www.pexels.com/api/)
+- 🔐 Security Overlay / Lock screen
+- 📰 News app using NewsAPI
+- ☁️ Weather with location search
 
 ---
 
