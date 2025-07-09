@@ -30,8 +30,8 @@
 - 📁 My Portfolio
 - 🖼️ Wallpaper using [Pexels API](https://www.pexels.com/api/)
 - 🔐 Security Overlay / Lock screen
-- 📰 News app using NewsAPI
-- ☁️ Weather with location search
+- 📰 News app using NewsAPI [News API](https://newsapi.org/)
+- ☁️ Weather with location search [News API](https://www.weatherapi.com/)
 
 ---
 
